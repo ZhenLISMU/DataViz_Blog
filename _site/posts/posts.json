@@ -1,0 +1,19 @@
+[
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to DataViz Makeover Blog",
+    "description": "Welcome to our new blog, DataViz Makeover Blog. We hope you enjoy \nreading what we have to say!",
+    "author": [
+      {
+        "name": "LI Zhen",
+        "url": "https://www.linkedin.com/in/zhen-li-8135b5189/"
+      }
+    ],
+    "date": "2021-05-22",
+    "categories": [],
+    "contents": "\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-05-22T15:14:08+08:00",
+    "input_file": {}
+  }
+]
