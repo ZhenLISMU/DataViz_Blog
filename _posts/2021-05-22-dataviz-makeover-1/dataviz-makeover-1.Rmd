@@ -6,7 +6,7 @@ author:
   - name: LI Zhen
     url: https://www.linkedin.com/in/zhen-li-8135b5189/
 date: 05-27-2021
-preview: original_chart.png
+preview: img/original_chart.png
 output:
   distill::distill_article:
     toc: true
