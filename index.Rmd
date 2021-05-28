@@ -1,5 +1,5 @@
 ---
-title: "DataViz Makeover Blog"
+title: "Visual Analytics & Application"
 site: distill::distill_website
 listing: posts
 ---
