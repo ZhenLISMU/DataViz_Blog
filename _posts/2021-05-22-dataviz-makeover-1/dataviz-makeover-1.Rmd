@@ -27,7 +27,7 @@ The original visualization is based on the data of [Department of Statistics, Si
 
 For the original charts, there are some mistakes in clarity and aesthetics aspects. The critiques and suggestions are listed as below:
 
-For the clarity:
+For the **clarity**:
 
 ```{r}
 critiques <- data.frame(Item = c(1,2,3,4,5,6), 
@@ -43,7 +43,7 @@ critiques <- data.frame(Item = c(1,2,3,4,5,6),
 library(knitr)
 kable(critiques,align = "ccc")
 ```
-For the aesthetics:
+For the **aesthetics**:
 
 ```{r}
 aesthetics <- data.frame(Item = c(1,2,3,4),
