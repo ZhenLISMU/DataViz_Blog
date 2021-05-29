@@ -142,10 +142,10 @@ Add the caption: The data is from the Department of Statistics, Singapore(DOS)
 ![](img/final_chart.jpg)
 
 ## 5.2	Observations
--	The surplus and deficit in the import and export trade between Singapore and China always cross and the surplus is always greater than the deficit
--	The international trade between Singapore and the United States will be dominated by a deficit in 2019, and will be dominated by a surplus in 2020. Generally speaking, the total deficit is greater than the total surplus.
--	For trade to Taiwan, the import trade volume has always been higher than export trade volume which means there is high deficit between Taiwan and Singapore.
--	For trade to Hong Kong, the import trade volume has always been lower than export trade volume which means there is high trade surplus between Hong Kong and Singapore.
+-	The surplus and deficit in the import and export trade between Singapore and China always cross and the surplus is always greater than the deficit. 
+-	The international trade between Singapore and the United States was dominated by a deficit in 2019, and was dominated by a surplus in 2020. Generally speaking, the total deficit is greater than the total surplus.
+-	For trading to Taiwan, the import trade volume has always been higher than export trade volume which means there is high deficit between Taiwan and Singapore.
+-	For trading to Hong Kong, the import trade volume has always been lower than export trade volume which means there is high trade surplus between Hong Kong and Singapore.
 -	From 2019 to 2020, the import and export trade volume between Singapore and China, the United States, and Malaysia fluctuates greatly over time. In contrast, the import and export trade volume between Singapore and Hong Kong, Taiwan and Japan is relatively stable.
 
 
