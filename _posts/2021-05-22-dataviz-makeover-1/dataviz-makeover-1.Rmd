@@ -122,7 +122,6 @@ We will set the range of one of them is fixed to positive and the other fixed to
 
 4.	Apply color
 Set the color according to the positive and negative data. For the positive data, we set the color to red and set the color to blue for negative data.
-For the positive part:
 ![](img/t13.png) ![](img/t12.png)
 
 5.	Hide the title of X axis
