@@ -65,7 +65,7 @@ kable(aesthetics,align = "ccc")
 
 ## 3.1 Sektch
 
-![](img/draft.jpg)
+![](img/draft.jpg){width = 500}
 
 ## 3.2	Advantage of proposed design
 
@@ -99,7 +99,6 @@ To create the line chart, we should first drag [Country_Export], [Measure Values
 ![](img/t8.png)
 
 To create the chart with the continuous time, we should change the [YEAR (Month of Period_Export] into the continuous format.
-
 ![](img/t4.png)
 
 Then the first part of chart is completed.
