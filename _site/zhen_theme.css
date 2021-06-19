@@ -32,7 +32,7 @@ html {
   --heading-font:    "Amiri", serif;
   --mono-font:       "DM Mono", monospace;
   --body-font:       "Bitter", sans-serif;
-  --navbar-font:     "Amiri", serif;  /* websites + blogs only */
+  --navbar-font:     "Amiri", serif;
 }
 
 /*-- ARTICLE METADATA --*/
