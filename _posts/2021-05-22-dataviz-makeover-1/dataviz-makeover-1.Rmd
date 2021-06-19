@@ -5,6 +5,8 @@ description: |
 author:
   - name: LI Zhen
     url: https://www.linkedin.com/in/zhen-li-8135b5189/
+    affiliation: School of Computing and Information System, Singapore Management University
+    affiliation_url: https://scis.smu.edu.sg/
 date: 05-27-2021
 preview: img/original_chart.png
 output:
@@ -65,7 +67,7 @@ kable(aesthetics,align = "ccc")
 
 ## 3.1 Sektch
 
-![](img/draft.jpg){width = 500}
+![](img/draft.jpg)
 
 ## 3.2	Advantage of proposed design
 
@@ -137,6 +139,9 @@ Add the caption: The data is from the Department of Statistics, Singapore(DOS)
 # 5.	Final Visualization
 
 ## 5.1 Snapshot of Final Chart
+
+The final design using tableau is as following [(Tableau Public)](https://public.tableau.com/app/profile/zhen.li7736/viz/VizMakeover1/Makeover1):
+
 ![](img/final_chart.jpg)
 
 ## 5.2	Main Observations

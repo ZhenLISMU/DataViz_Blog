@@ -7,6 +7,8 @@ navbar:
   right:
     - text: "Posts"
       href: index.html
+    - text: "Tableau Public"
+      href: https://public.tableau.com/profile/zhen.li7736#!/
     - text: "About"
       href: about.html
     - icon: fa fa-linkedin

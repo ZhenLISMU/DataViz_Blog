@@ -64,7 +64,7 @@ Moreover, for the label of X-axis and Y-axis, there is no unit of measurement of
 
 ## 3.2 Final Design
 
-The final design by using Tableau is as follow:
+The final design by using Tableau is as follow [(Tableau Public)](https://public.tableau.com/app/profile/zhen.li7736/viz/makeover2_16241157051710/makeover2):
 
 ![](pic/makeover2.jpg)
 

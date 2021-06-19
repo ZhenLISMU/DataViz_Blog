@@ -77,12 +77,12 @@ d-appendix {
 /*-- Additional custom styles --*/
 
 .categories li > a:hover {
-    color: #00ff00;
-    border-bottom: 1px #00ff00;
+    color: #0080FF;
+    border-bottom: 1px #0080FF;
 }
 
 p a:hover  {
-    color: #00ff00;
+    color: #0080FF;
 }
 
 /* Change appearance of headers */
