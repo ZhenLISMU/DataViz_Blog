@@ -1,5 +1,5 @@
 ---
-title: "Visual "
+title: "Visualization"
 site: distill::distill_website
 listing: posts
 ---
