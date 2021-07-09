@@ -3,17 +3,17 @@
     {
       "path": "about.html",
       "title": "About this blog",
-      "description": "Some additional details about the blog",
+      "description": "Welcome to my blog!",
       "author": [],
-      "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-19T22:34:13+08:00"
+      "contents": "\r\nThese blog posts record my projects and assignments during the learning journey of Master of IT in Business (MITB) in Singapore Management University. Hope you can enjoying them!\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-07-05T19:42:33+08:00"
     },
     {
       "path": "index.html",
-      "title": "Visualization",
+      "title": "Data, Statistics, Visualization",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-06-19T23:39:38+08:00"
+      "last_modified": "2021-07-05T19:23:21+08:00"
     }
   ],
   "collections": ["posts/posts.json"]

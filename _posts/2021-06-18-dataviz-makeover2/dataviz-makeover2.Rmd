@@ -1,5 +1,5 @@
 ---
-title: "DataViz Makeover2"
+title: "DataViz Makeover 2"
 description: |
   Describe the merchandise trade performance with 10 major trading partners from 2011 to 2020.
 author:
@@ -8,7 +8,7 @@ author:
     affiliation: School of Computing and Information System, Singapore Management University
     affiliation_url: https://scis.smu.edu.sg/
 date: 06-18-2021
-preview: pic/preview.jpg
+preview: pic/pre.png
 output:
   distill::distill_article:
     toc: true
