@@ -55,7 +55,7 @@ This code chunk checks whether the required packages were installed and run the 
 ```{r}
 packages = c('raster','sf','tmap','clock','tidyverse','ggplot2','plotly',
              'tidytext','topicmodels','quanteda','stm','dplyr','rmarkdown'
-             ,'wordcloud')
+             ,'wordcloud','scales')
 for (p in packages){
   if(!require(p,character.only = T)){
     install.packages(p)
@@ -106,8 +106,10 @@ To answer this question, we need to first identify what are the meaningful messa
 # extract data from mbdata
 text_mb1 <- tibble(line = 1:3872,Time = mbdata$`date(yyyyMMddHHmmss)`, 
                    author = mbdata$author, text = mbdata$message)
-text_mb1 %>%
-  separate(text, into = c("text", "tag"), sep = "#")
+text_mb1<-text_mb1 %>%
+  separate(text, into = c("text", "tag"), sep = "#")%>%
+  select(-tag)
+text_mb1
 ```
 
 ```{r}
@@ -259,7 +261,7 @@ evaluate_use1 %>%
   with(wordcloud(word, n, max.words = 100))
 ```
 
-```{r count_evaluate_nuse, fig.align='center',fig.width=8,fig.height=5}
+```{r count_evaluate_nuse, fig.align='center',fig.width=10,fig.height=5}
 plot_ly(data = count_evaluate_nuse,
         x = ~n,
         y = ~reorder(word,n),
@@ -268,24 +270,77 @@ plot_ly(data = count_evaluate_nuse,
                            line = list(color = 'rgb(8,48,107)', width = 1.5)),
         textposition = 'outside',
         type = "bar")%>%
-  layout(title = 'Top 10 hot key words from meaningful messages',
+  layout(title = 'Top 10 hot key words from junk messages',
          xaxis=list(title = ""),
          yaxis = list(title = ""),
          categorxorder = "value")
-```
 
-```{r evaluate_nuse1, fig.align='center',fig.width=8,fig.height=5}
 evaluate_nuse1 %>%
   ungroup()%>%
   count(word)%>%
   with(wordcloud(word, n, max.words = 100))
 ```
 
+From the charts, we can see that count of "pokrally" from junk messages is the highest and count of "ablia" is the highest from meaningful messages. 
 
+```{r}
+nuse <- evaluate_nuse1%>%
+  select(line)
+nuse = unique(nuse)
+nuse$useful = "junk"
+dif_message <- text_mb1%>%
+  left_join(nuse,by = "line")
+dif_message <- dif_message %>%
+  replace_na(list(useful = "meaningful"))
+paged_table(dif_message)
+```
 
+```{r dif_message,fig.align='center',fig.width=10,fig.height=5}
 
+time<-ggplot(data = dif_message,aes(x = Time,fill=useful,color = useful))+
+  geom_histogram(alpha = 0.5,position="identity",bins = 50)+
+  facet_wrap(~useful, ncol = 1)+
+  ggtitle('Distribution of frequency of sending messages from 17:00 to 21:30')+
+  theme(axis.title.y =element_blank(),
+        axis.title.x =element_blank())
+  
+time <- ggplotly(time)
+  
+time
+```
 
+```{r}
+frequency <- dif_message %>% 
+  group_by(author) %>% 
+  count(useful, sort = TRUE) %>% 
+  left_join(dif_message %>% 
+              group_by(author) %>% 
+              summarise(total = n())) %>%
+  mutate(freq = n/total)
+frequency
+```
 
+```{r}
+frequency <- frequency %>% 
+  select(author, useful, freq) %>% 
+  pivot_wider(names_from = useful, values_from = freq) %>%
+  arrange(junk, meaningful)
+frequency$junk = as.numeric(frequency$junk)
+frequency$meaningful = as.numeric(frequency$meaningful)
+frequency <- frequency%>%
+  replace_na(list(junk = 0))%>%
+  replace_na(list(meaningful = 0))
+```
+
+```{r frequency, fig.align='center',fig.width=10,fig.height=5}
+scatter <- ggplot(frequency, aes(junk, meaningful,)) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.25, height = 0.25) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  geom_abline(color = "red")+
+  ggtitle("Comparing the frequency of junk and meaningful messages")
+ggplotly(scatter)
+```
 
 
 
