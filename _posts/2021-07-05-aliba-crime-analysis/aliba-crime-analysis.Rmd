@@ -347,7 +347,7 @@ ggplotly(scatter)
 pairs_use <- evaluate_use1 %>% 
   ungroup()%>%
   pairwise_count(word, line, sort = TRUE)
-pairs_use
+paged_table(pairs_use)
 
 set.seed(1234)
 pairs_use %>%
@@ -367,14 +367,14 @@ pairs_use %>%
 pairs_nuse <- evaluate_nuse1 %>% 
   ungroup()%>%
   pairwise_count(word, line, sort = TRUE)
-pairs_nuse
+paged_table(pairs_nuse)
 
 set.seed(1234)
 pairs_nuse %>%
   filter(n >= 20) %>%
   graph_from_data_frame() %>%
   ggraph(layout = "fr") +
-  geom_edge_link(aes(edge_alpha = n, edge_width = n), edge_colour = "cyan4") +
+  geom_edge_link(aes(edge_alpha = n, edge_width = n), edge_colour = "red") +
   geom_node_point(size = 5) +
   geom_node_text(aes(label = name), repel = TRUE, 
                  point.padding = unit(0.2, "lines")) +
