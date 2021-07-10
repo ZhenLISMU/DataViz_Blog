@@ -16,7 +16,7 @@ output:
     self_contained: false
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,fig.retina=3)
 ```
 # 1. Introduction
 
@@ -281,66 +281,7 @@ evaluate_nuse1 %>%
   with(wordcloud(word, n, max.words = 100))
 ```
 
-From the charts, we can see that count of "pokrally" from junk messages is the highest and count of "ablia" is the highest from meaningful messages. 
-
-```{r}
-nuse <- evaluate_nuse1%>%
-  select(line)
-nuse = unique(nuse)
-nuse$useful = "junk"
-dif_message <- text_mb1%>%
-  left_join(nuse,by = "line")
-dif_message <- dif_message %>%
-  replace_na(list(useful = "meaningful"))
-paged_table(dif_message)
-```
-
-```{r dif_message,fig.align='center',fig.width=10,fig.height=5}
-
-time<-ggplot(data = dif_message,aes(x = Time,fill=useful,color = useful))+
-  geom_histogram(alpha = 0.5,position="identity",bins = 50)+
-  facet_wrap(~useful, ncol = 1)+
-  ggtitle('Distribution of frequency of sending messages from 17:00 to 21:30')+
-  theme(axis.title.y =element_blank(),
-        axis.title.x =element_blank())
-  
-time <- ggplotly(time)
-  
-time
-```
-
-```{r}
-frequency <- dif_message %>% 
-  group_by(author) %>% 
-  count(useful, sort = TRUE) %>% 
-  left_join(dif_message %>% 
-              group_by(author) %>% 
-              summarise(total = n())) %>%
-  mutate(freq = n/total)
-frequency
-```
-
-```{r}
-frequency <- frequency %>% 
-  select(author, useful, freq) %>% 
-  pivot_wider(names_from = useful, values_from = freq) %>%
-  arrange(junk, meaningful)
-frequency$junk = as.numeric(frequency$junk)
-frequency$meaningful = as.numeric(frequency$meaningful)
-frequency <- frequency%>%
-  replace_na(list(junk = 0))%>%
-  replace_na(list(meaningful = 0))
-```
-
-```{r frequency, fig.align='center',fig.width=10,fig.height=5}
-scatter <- ggplot(frequency, aes(junk, meaningful,)) +
-  geom_jitter(alpha = 0.1, size = 2.5, width = 0.25, height = 0.25) +
-  scale_x_log10(labels = percent_format()) +
-  scale_y_log10(labels = percent_format()) +
-  geom_abline(color = "red")+
-  ggtitle("Comparing the frequency of junk and meaningful messages")
-ggplotly(scatter)
-```
+From the charts, we can see that count of "pokrally" from junk messages is the highest and count of "ablia" is the highest from meaningful messages. Apart from the single word dimension, we can also explore the relationship between the co occur words.
 
 ```{r}
 #co-occur words for meaningful messages
@@ -382,7 +323,70 @@ pairs_nuse %>%
   ggtitle("Co-occur words for junk messages")
 ```
 
+From the word dimension, we can find that it is more frequently for words appear together in meaningful message than those appear in junk messages. This indicate that meaningful messages have more converge topics. Therefore, there were more fixed words groups in meaningful messages.
 
+```{r}
+nuse <- evaluate_nuse1%>%
+  select(line)
+nuse = unique(nuse)
+nuse$useful = "junk"
+dif_message <- text_mb1%>%
+  left_join(nuse,by = "line")
+dif_message <- dif_message %>%
+  replace_na(list(useful = "meaningful"))
+paged_table(dif_message)
+```
+
+```{r dif_message,fig.align='center',fig.width=10,fig.height=5}
+
+time<-ggplot(data = dif_message,aes(x = Time,fill=useful,color = useful))+
+  geom_histogram(alpha = 0.5,position="identity",bins = 50)+
+  facet_wrap(~useful, ncol = 1)+
+  ggtitle('Distribution of frequency of sending messages from 17:00 to 21:30')+
+  theme(axis.title.y =element_blank(),
+        axis.title.x =element_blank())
+  
+time <- ggplotly(time)
+  
+time
+```
+
+From the chart, we can find that meaningful messages have two peaks which happened around the 18:50 pm and 19:45 pm. For junk messages, there were only one peak which happened overlap with the latter peak of meaningful messages.
+
+```{r}
+frequency <- dif_message %>% 
+  group_by(author) %>% 
+  count(useful, sort = TRUE) %>% 
+  left_join(dif_message %>% 
+              group_by(author) %>% 
+              summarise(total = n())) %>%
+  mutate(freq = n/total)
+frequency
+```
+
+```{r}
+frequency <- frequency %>% 
+  select(author, useful, freq) %>% 
+  pivot_wider(names_from = useful, values_from = freq) %>%
+  arrange(junk, meaningful)
+frequency$junk = as.numeric(frequency$junk)
+frequency$meaningful = as.numeric(frequency$meaningful)
+frequency <- frequency%>%
+  replace_na(list(junk = 0))%>%
+  replace_na(list(meaningful = 0))
+```
+
+```{r frequency, fig.align='center',fig.width=10,fig.height=5}
+scatter <- ggplot(frequency, aes(junk, meaningful,)) +
+  geom_jitter(alpha = 0.1, size = 2.5, width = 0.25, height = 0.25) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  geom_abline(color = "red")+
+  ggtitle("Comparing the frequency of junk and meaningful messages")
+ggplotly(scatter)
+```
+
+From this chart, we can find that many authors sent both junk messages and meaningful messages because there are more points in the middle of charts. However, when we compare which authors send more junk messages or meaningful messages, it is easy to find that authors send more junk messages and there were higher number of authors who have 90% of messages are junk messages.
 
 
 
