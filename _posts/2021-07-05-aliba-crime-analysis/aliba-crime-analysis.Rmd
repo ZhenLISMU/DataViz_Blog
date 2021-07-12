@@ -55,7 +55,7 @@ This code chunk checks whether the required packages were installed and run the 
 ```{r}
 packages = c('raster','sf','tmap','clock','tidyverse','ggplot2','plotly',
              'tidytext','topicmodels','quanteda','stm','dplyr','rmarkdown'
-             ,'wordcloud','scales','widyr','igraph','ggraph')
+             ,'wordcloud','scales','widyr','igraph','ggraph','rgdal','gifski')
 for (p in packages){
   if(!require(p,character.only = T)){
     install.packages(p)
@@ -126,18 +126,7 @@ useful_author <- text_mb %>%
          |text_mb$author == "AbilaPoliceDepartment")
 
 useful_author1 <- useful_author %>%
-  filter(useful_author$word != "to"&useful_author$word != "of"&useful_author$word != "and"
-         &useful_author$word != "at"&useful_author$word != "has"
-         &useful_author$word != "the"&useful_author$word != "a"
-         &useful_author$word != "but"&useful_author$word != "that"
-         &useful_author$word != "is"&useful_author$word != "in"
-         &useful_author$word != "on"&useful_author$word != "dr"
-         &useful_author$word != "up"&useful_author$word != "e"
-         &useful_author$word != "for"&useful_author$word != "us"
-         &useful_author$word != "di"&useful_author$word != "this"
-         &useful_author$word != "we"&useful_author$word != "your"
-         &useful_author$word != "our"&useful_author$word != "with"
-         &useful_author$word != "next"&useful_author$word != "been")
+  filter(!word %in% stop_words$word)
 ```
 
 ```{r}
@@ -146,17 +135,6 @@ count_use <-  useful_author1 %>%
   count(word)%>%
   top_n(10)
 paged_table(count_use)
-```
-
-Visualization of hot key words from official channel.
-
-```{r count_use,fig.align='center',fig.width=8,fig.height=5}
-ggplot(count_use,aes(x =n, y = word,fill = author))+
-  geom_bar(stat = 'identity')+
-  facet_wrap(~author)+
-  theme(axis.title.y =element_blank(),
-        axis.title.x =element_blank())+
-  ggtitle("Top words from the official channel")
 ```
 
 ```{r}
@@ -192,39 +170,10 @@ Therefore, we have the dataset ***evaluate_use*** for meaningful messages and **
 ```{r}
 # top10 hot words comparasion between meaningful and junk messages
 evaluate_use1 <- evaluate_use %>%
-  subset(evaluate_use$word != "to"&evaluate_use$word != "of"&evaluate_use$word != "and"
-         &evaluate_use$word != "at"&evaluate_use$word != "has"
-         &evaluate_use$word != "the"&evaluate_use$word != "a"
-         &evaluate_use$word != "but"&evaluate_use$word != "that"
-         &evaluate_use$word != "is"&evaluate_use$word != "in"
-         &evaluate_use$word != "on"&evaluate_use$word != "dr"
-         &evaluate_use$word != "up"&evaluate_use$word != "e"
-         &evaluate_use$word != "for"&evaluate_use$word != "us"
-         &evaluate_use$word != "di"&evaluate_use$word != "this"
-         &evaluate_use$word != "we"&evaluate_use$word != "your"
-         &evaluate_use$word != "our"&evaluate_use$word != "with"
-         &evaluate_use$word != "next"&evaluate_use$word != "been"
-         &evaluate_use$word != "rt"&evaluate_use$word != "have"
-          &evaluate_use$word != "abilapost" &evaluate_use$word != "are")
+  subset(!word %in% stop_words$word)
          
 evaluate_nuse1 <- evaluate_nuse %>%
-  subset(evaluate_nuse$word != "to"&evaluate_nuse$word != "of"&evaluate_nuse$word != "and"
-         &evaluate_nuse$word != "at"&evaluate_nuse$word != "has"
-         &evaluate_nuse$word != "the"&evaluate_nuse$word != "a"
-         &evaluate_nuse$word != "but"&evaluate_nuse$word != "that"
-         &evaluate_nuse$word != "is"&evaluate_nuse$word != "in"
-         &evaluate_nuse$word != "on"&evaluate_nuse$word != "dr"
-         &evaluate_nuse$word != "up"&evaluate_nuse$word != "e"
-         &evaluate_nuse$word != "for"&evaluate_nuse$word != "us"
-         &evaluate_nuse$word != "di"&evaluate_nuse$word != "this"
-         &evaluate_nuse$word != "we"&evaluate_nuse$word != "your"
-         &evaluate_nuse$word != "our"&evaluate_nuse$word != "with"
-         &evaluate_nuse$word != "next"&evaluate_nuse$word != "been"
-         &evaluate_nuse$word != "rt"&evaluate_nuse$word != "you"
-         &evaluate_nuse$word != "are"&evaluate_nuse$word != "hi"
-         &evaluate_nuse$word != "it"&evaluate_nuse$word != "not"
-         &evaluate_nuse$word != "can"&evaluate_nuse$word != "what"
-         &evaluate_nuse$word != "i"&evaluate_nuse$word != "have")
+  filter(!word %in% stop_words$word)
 count_evaluate_use <- evaluate_use1 %>%
   ungroup()%>%
   count(word)%>%
@@ -388,26 +337,338 @@ ggplotly(scatter)
 
 From this chart, we can find that many authors sent both junk messages and meaningful messages because there are more points in the middle of charts. However, when we compare which authors send more junk messages or meaningful messages, it is easy to find that authors send more junk messages and there were higher number of authors who have 90% of messages are junk messages.
 
-
-
-
-
-
-
-
-
-
 ## 4.2 Risk evaluation
 
 The second question is as following:
 
 Use visual analytics to represent and evaluate how the level of the risk to the public evolves over the course of the evening. Consider the potential consequences of the situation and the number of people who could be affected. Please limit your answer to 10 images and 1000 words.
 
+To answer this question, we need to first address the risk events happened during the 17:00 to 21:30 period. To ensure the authenticity of the event, we need to use ccdata and mbdata to track the accidents. With ccdata, we can find the accidents and use the related messages from mbdata to get more details of accidents.
+
+```{r}
+clean_cc <- tibble(id =1:191,time = ccdata$`date(yyyyMMddHHmmss)`,
+                   messages = ccdata$message, locations = ccdata$location)
+clean_cc <- clean_cc%>%
+  filter(messages!="INCOMPLETE CALL FOR POLICE")
+clean_cc$messages = tolower(clean_cc$messages)
+paged_table(clean_cc)
+```
+
+To better evaluate the level of risk, we should first set the standard for risks. Therefore, we have developed a measurement range of 0-5 for the level of risk. 0 represents the situation when police check and found no risks. 1 refers to situations with the lowest risk, such as traffic jams. 5 represents the most risky situation, such as fire or death. We will first look at ccdata to find the accidents and evaluate the sensitivity based on details provided in mbdata.
+
+```{r}
+event_unqiue <- unique(clean_cc$messages)
+```
+
+From the event_unique, we can find that there are some accidents' risk level can be predefined. By doing this, we can focus on more server and complicated events. By reading through the ccdata, we can find that there are 4 server events happened during the 17:00 to 21:30. They are fire in dancing dolphin, hit and run accident and shoot and standoff. These are the most severe events and we set the risk level of related messages to be 5. One left is gathering in the Ablia city park and we set this as 4.
+
+```{r}
+risk_cc <- clean_cc
+low <- c("traffic stop", "business check", "subject stop","disturbance-noise","prowler")
+severe <- c("vehicle accident-report",
+            "fire/medics needed-fire trucks #41 and #57 dispatched to fire",
+            "felony hit & run - in progress-with injury",
+            "police needed-police units #101 and #220 dispatched to fire",
+            "fire/medics needed-amublance dispatched to fire",
+            "fire/medics needed-fire truck #23 dispatched to fire",
+            "felony hit & run-in progress-with injury",
+            "all units broadcast-felony hit & run-black van/partial plate #l829",
+            "fire/medics dispatched-pedestrian hit & run",
+            "fire/medics needed-officer down",
+            "fire/medics needed-ambulance dispatched",
+            "dire emergency/police needed-officer down-send additional units",
+            "dire emergency/swat team dispatched",
+            "pursuit continues-police units #253 and #357/second unit joins",
+            "pursuit-continues-police units #253 and #357",
+            "pursuit-police unit #253 in pursuit",
+            "all units broadcast-building fire"
+            )
+middle <- c("keep the peace-crowd control/abila city park","park check",
+            "crowd control-street closure","possible fire-report",
+            "police unit dispatched-crowd control")
+risk_cc$risk <- ifelse(risk_cc$messages %in% low, 1, 
+                       ifelse(risk_cc$messages == "alarm-secure no crime",0,
+                       ifelse(risk_cc$messages == "shoplifting",2,
+                              ifelse(risk_cc$messages %in% severe,5,
+                                     ifelse(risk_cc$messages %in% middle,4,3)))))
+```
+
+We built a chart to show the risk level changing based on time.
+
+```{r}
+plot_ly(data = risk_cc,
+       x = ~time,
+       y = ~risk,
+       text = ~messages,
+       type = "scatter",
+       mode = "line"
+       )%>%
+  layout(title = 'Changing of risk level from 17:00 to 21:30',
+         xaxis = list(title = ""))
+ 
+```
+
+For potential consequence and number of affected people, we will mainly focus on the four major events.
+
+### a). Crowd gathering in City Park
+
+First event was a crowd gathering in the Ablia City Park. To get more information about this event, we should select the messages about "park" from mbdata. Since there were a shooting happened in Gelatogalore near city park at around 19:40. To better evaluate the potential results and number of affected people, we separate them and consider the crowd gathering first.
+
+```{r}
+park <- text_mb1 %>%
+  filter(grepl('park|Park|gathering',text))%>%
+  filter(Time< "2014-01-23 19:40:00")%>%
+  unnest_tokens(word,text)%>%
+  filter(!word %in% stop_words$word)
+```
+
+```{r}
+park %>%
+  filter(word != 'rt'&word != 'park')%>%
+  count(word)%>%
+  top_n(10)%>%
+  plot_ly(
+        x = ~n,
+        y = ~reorder(word,n),
+        text = ~n,
+        marker = list(color = 'rgb(158,202,225)',
+                           line = list(color = 'rgb(8,48,107)', width = 1.5)),
+        textposition = 'outside',
+        type = "bar")%>%
+  layout(title = 'Top 10 hot key words from messages related to park',
+         xaxis=list(title = ""),
+         yaxis = list(title = ""),
+         categorxorder = "value")
+```
+
+```{r}
+park %>%
+  filter(word != 'rt'&word != 'park')%>%
+  count(word)%>%
+  with(wordcloud(word,n,max.words = 300))
+```
+
+```{r}
+risk_cc %>%
+  filter(grepl('Egeou',locations))%>%
+  filter(time< "2014-01-23 19:20:00")
+```
+From the messages from mbdata and ccdata, we can all find that there were not severe hurt or injury happened during the crowd gathering. In the ccdata, we extract the record of related location and found the police put in a lot of police force to maintain the order of the park gathering. In the park, there were many POK leaders doing speech and tried to call on everyone against governance. Therefore, the potential consequence is may causing crowd protest marches or more serious riots.
+To find out the number of affected people, we can filter the word which contains numbers.
+
+```{r}
+park %>%
+  group_by(line)%>%
+  filter(grepl("^[0-9]{1,}$", word))%>%
+  paged_table()
+```
+```{r}
+text_mb1 %>%
+  filter(line == 358|line == 409)%>%
+  paged_table()
+
+```
+
+From the messages, we can find that the number of affected people is 1200.
+
+### b). Fire in the dancing dolphin
+
+To first understand more details about this accidents, we need to filter the messages related to this event. Therefore, we set "fire", "dancing" and "dolphin" as the key words and also need to refer to ccdata and messages from Abila fire department. 
+
+```{r}
+firedep <- text_mb1%>%
+  filter(author == "AbilaFireDept")
+paged_table(firedep)
+```
+
+```{r}
+firecc<- risk_cc%>%
+  filter(grepl("fire",messages))
+paged_table(firecc)
+```
+
+From the offical messages, we can find that the fire in dancing dolphin started from 18:40 *(ccdata - "possible fire-report")* to 21:30 *(AbilaFireDept - "Abila Fire Department reports an explosion at the Dancing Dolphin fire at Achilleos & Madeg ")*. The duration of this fire is very long and according to the records, there were an explosion at 21:30. Therefore, the risk level of it is very high.
+
+```{r}
+mbdata$message = tolower(mbdata$message)
+f <- c("gun","shot")
+firemb <- mbdata%>%
+  filter(grepl("dancing|dolphin|fire",message))%>%
+  filter(!grepl("shot|gun",message))
+paged_table(firemb)
+```
+
+From the messages of fire department, witnesses saw smoke from windows of the second floor of dancing dolphin building. Abila Fire Department dsent two fire trucks and an ambulance to the apartment.Some residents successfully exited the building and were treated for smoke inhalation and minor injuries. Firemen found one resident trapped on an upper floor and later managed to rescue him. Unfortunately, one firefighter was injured during the fire and was taken to the hospital for treatment. As time went by, the fire did not seem to be under control and the top floors of Dancing Dolphin Apartments collapsed at around 20:33. Abila Fire Department sent three more fire trucks to help and the fire was under control around 21:23. At 21:30, an explosion occurred inside the Dancing Dolphin Apartments and several people were injured according to the mbdata. 
+
+```{r}
+firemb%>%
+  unnest_tokens(word,message)%>%
+  select(author,word,`date(yyyyMMddHHmmss)`)%>%
+  filter(!word %in% stop_words$word)%>%
+  filter(word != 'rt'&word != 'fire'&word != 'dancing'&word != 'dolphin'&word != 'centralbulletin')%>%
+  count(word)%>%
+  top_n(10)%>%
+  plot_ly(
+        x = ~n,
+        y = ~reorder(word,n),
+        text = ~n,
+        marker = list(color = 'rgb(158,202,225)',
+                           line = list(color = 'rgb(8,48,107)', width = 1.5)),
+        textposition = 'outside',
+        type = "bar")%>%
+  layout(title = 'Top 10 hot key words from messages related to dancing dolphin',
+         xaxis=list(title = ""),
+         yaxis = list(title = ""),
+         categorxorder = "value")
+```
+
+```{r}
+firemb %>%
+  unnest_tokens(word,message)%>%
+  select(author,word,`date(yyyyMMddHHmmss)`)%>%
+  filter(!word %in% stop_words$word)%>%
+  filter(word != 'rt'&word != 'fire'&word != 'dancing'&word != 'dolphin'&word != 'centralbulletin')%>%
+  count(word)%>%
+  with(wordcloud(word,n,max.words = 300))
+```
+
+From the visualization above, we can find that there are many messages about Abila Fire Department sent the fire units to the scene and how police and firefighter respond to fire. Although the official department respond quickly, there were an explosion happened. Therefore, the potential consequence of situation could be residents in and around apartment may get injured or even dead. Moreover, the firefighters could also be injured or even dead because of fire.
+
+```{r}
+firemb %>%
+  filter(grepl("^[0-9]{1,}$", message))%>%
+  paged_table()
+```
+
+Since there is no messages about the exact number residents being affected, it is hard to estimate the number. Based on what we have now, the affected people are mainly the residents of dancing dolphin department and people around the dancing dolphin when explosion happened. The dancing dolphin aprtment has six floors. Therefore, we estimate the number of affected people could be around 100.
+
+### c). Black van
+
+To get more information of black van events, we need to combine the messages from Ablia Police Department and mbdata together.
+
+```{r}
+black_police <- mbdata %>%
+  filter(author == "AbilaPoliceDepartment")%>%
+  select(-location,-latitude,-longitude,-type)
+paged_table(black_police)
+```
+
+From the messages of Abila Police Department, we can have a review of event process. At 19:19, a black van hit a car on Souliou St and escaped. Fortunately, no or unknown injuries were reported. Later, the van struck a bicyclist on the 500 block of Schaber St. Luckily, the bicyclist was uninjured according to the mbdata. Abila Police Department broadcasted the accident and released a partial license plate number of the vehicle. The black van went West on Egeou St and was pursued by police. After getting trapped by police in the Gelato Galore parking lot, at the corner of Ithakis St and Alexandrias St, the suspects opened the doors and fired at police officers at 19:40. A police officer was shot. An ambulance arrived on the scene and rescued the wounded officer. Luckily, they reported this officer were stable. More police arrived and evacuated the corner of Ithakis St and Alexandrias St for public safety. Then, the Abila Police SWAT team arrived to help handle the standoff. The gunmen revealed they were holding hostages in the van and threatened to kill them if the police didn't let the gunmen go. At 20:11, the SWAT team began to negotiate with the shooter. The negotiation took more than half an hour and at 21:00, one gunman went back in the van. Witnesses saw two suspects were fighting in the van. At around 21:20, two suspects surrendered and two hostages were rescued. 
+
+```{r}
+black_mb <- mbdata%>%
+  filter(grepl("black|van|shot|hostage|hit|standoff",message))%>%
+  filter(`date(yyyyMMddHHmmss)`> "2014-01-23 19:15:00")
+paged_table(black_mb)
+```
+
+```{r}
+black_word <- black_mb %>%
+  select(-type,-latitude,-longitude,-location)%>%
+  unnest_tokens(word,message)%>%
+  filter(!word %in% stop_words$word)
+```
+
+```{r}
+black_word%>%
+  filter(word != "rt")%>%
+  count(word)%>%
+  top_n(10)%>%
+  plot_ly(
+        x = ~n,
+        y = ~reorder(word,n),
+        text = ~n,
+        marker = list(color = 'rgb(158,202,225)',
+                           line = list(color = 'rgb(8,48,107)', width = 1.5)),
+        textposition = 'outside',
+        type = "bar")%>%
+  layout(title = 'Top 10 hot key words from messages related to black van',
+         xaxis=list(title = ""),
+         yaxis = list(title = ""),
+         categorxorder = "value")
+```
+
+```{r}
+black_word%>%
+  count(word)%>%
+  filter(word != "rt")%>%
+  with(wordcloud(word,n,max.words = 300))
+```
+
+From the messages, we can conclude that the potential consequence based on black van events can be very severe. It is very lucky that the kidnapping ends with a peaceful result. However, the worst potential consequence is the death of four or even more innocent people.
+
+```{r}
+num_black <- black_word %>%
+  filter(grepl("^[0-9]{1,}$",word))
+unique(num_black$word)
+```
+```{r}
+black_mb %>%
+  filter(grepl("500|100|3|200",message))%>%
+  paged_table()
+
+```
+
+From the messages selected based on numbers, we can find that there are 200 people gathered to watch standoff *(close to 200 people have gathered to watch standoff at alexandrias & ithakis #abilapost)*. Therefore, the number of affected people is around 200. 
+
 ## 4.3 Event respondence
 
 The third question is as following:
 
 If you were able to send a team of first responders to any single place, where would it be? Provide your rationale. How might your response be different if you had to respond to the events in real time rather than retrospectively? Please limit your answer to 8 images and 500 words.
+
+For the first question, my answer is **dancing dolphin apartment**. Since the potential consequences of fire in dancing dolphin apartment and black van are all severe, the locations of these two incidents are close. It will be easy for police department to control the severe incidents. 
+
+```{r}
+bgmap <- raster("D:/second_term/Visual Analytics/Assignment/MC3/Geospatial/MC2-tourist.tif")
+tm_shape(bgmap) +
+tm_rgb(bgmap, r = 1,g = 2,b = 3,
+       alpha = NA,
+       saturation = 1,
+       interpolate = TRUE,
+       max.value = 255)
+```
+```{r}
+Abila_st <- st_read(dsn = "D:/second_term/Visual Analytics/Assignment/MC3/Geospatial",
+                    layer = "Abila")
+```
+```{r}
+gps <- mbdata %>%
+  select(`date(yyyyMMddHHmmss)`,message,latitude,longitude)%>%
+  drop_na()
+
+gps_sf <- st_as_sf(gps, 
+                   coords = c("longitude", "latitude"),
+                       crs= 4326)
+
+gps_point <- gps_sf %>%
+  group_by(message) %>%
+  summarize(m = mean(`date(yyyyMMddHHmmss)`),
+            do_union = FALSE)%>%
+  st_cast("MULTIPOINT")
+```
+
+```{r}
+tmap_mode("view")
+tm_shape(bgmap) +
+  tm_rgb(bgmap, r = 1,g = 2,b = 3,
+       alpha = NA,
+       saturation = 1,
+       interpolate = TRUE,
+       max.value = 255) +
+  tm_shape(gps_point) +
+  tm_dots(col = "red")
+```
+
+The city park is far away from dancing dolphin and black van vehicle route. Moreover, the potential consequence is not as severe as fire and kidnapping. POK tried to use this gathering to distract the police's attention. 
+
+However, if i had to respond the event in real time, i will send police to city park first to prevent the potential protest march and fights among people. 
+
+
+
+
+
+
 
 
 
