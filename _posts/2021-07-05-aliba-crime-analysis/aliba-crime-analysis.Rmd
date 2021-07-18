@@ -42,7 +42,7 @@ For the solutions provided by [Middlesex University](https://www.cs.umd.edu/hcil
 
 ![](pic/li2.jpg)
 
-For the solutions provided by [Tianjin University](https://www.cs.umd.edu/hcil/varepository/VAST%20Challenge%202014/challenges/MC3%20-%20Real-Time,%20Streaming%20Social%20Media/entries/Tianjin%20University/), they mainly used the word cloud and variation charts of different words. They also build the map based on the messages. The corresponding colors between the word cloud and variation chart are difficult for readers to recognize. 
+For the solutions provided by [Tianjin University](https://www.cs.umd.edu/hcil/varepository/VAST%20Challenge%202014/challenges/MC3%20-%20Real-Time,%20Streaming%20Social%20Media/entries/Tianjin%20University/), they mainly used the word cloud and variation charts of different words. They also build the map based on the messages. The word cloud can help readers to quickly understand the topic and main content of messages. Moreover, the changing line graph can reflect the variation of message numbers changing. These two charts are good application of visualization analytics of data.  
 
 ![](pic/li3.jpg)
 
@@ -611,13 +611,26 @@ black_mb %>%
 
 From the messages selected based on numbers, we can find that there are 200 people gathered to watch standoff *(close to 200 people have gathered to watch standoff at alexandrias & ithakis #abilapost)*. Therefore, the number of affected people is around 200. 
 
+```{r key, fig.height=7}
+key <- text_mb%>%
+  filter(word == "park"|word == "fire"|word == "hit"|word == "van"|word=="shots")
+ggplot(key,aes(x = Time, fill = word, color = word))+
+           geom_histogram(alpha = 0.5,position="identity",bins = 100)+
+           facet_wrap(~word, ncol = 1)+
+           ggtitle('Distribution of frequency of key words from 17:00 to 21:30')+
+           theme(axis.title.y =element_blank(),
+                 axis.title.x =element_blank())
+```
+
+
+
 ## 4.3 Event respondence
 
 The third question is as following:
 
 If you were able to send a team of first responders to any single place, where would it be? Provide your rationale. How might your response be different if you had to respond to the events in real time rather than retrospectively? Please limit your answer to 8 images and 500 words.
 
-For the first question, my answer is **dancing dolphin apartment**. Since the potential consequences of fire in dancing dolphin apartment and black van are all severe, the locations of these two incidents are close. It will be easy for police department to control the severe incidents. 
+For the first question, my answer is **dancing dolphin apartment**. Since the potential consequences of fire in dancing dolphin apartment and black van are all severe, the locations of these two incidents are close. It will be easy for police department to control the severe incidents not only the dancing dolphin but also the black van. 
 
 ```{r}
 bgmap <- raster("D:/second_term/Visual Analytics/Assignment/MC3/Geospatial/MC2-tourist.tif")
@@ -660,9 +673,9 @@ tm_shape(bgmap) +
   tm_dots(col = "red")
 ```
 
-The city park is far away from dancing dolphin and black van vehicle route. Moreover, the potential consequence is not as severe as fire and kidnapping. POK tried to use this gathering to distract the police's attention. 
+The city park is far away from dancing dolphin and black van vehicle route. Moreover, the potential consequence is not as severe as fire and kidnapping. POK tried to use this gathering to distract the police's attention. By doing this, they can more smoothly complete their attack targets and events.
 
-However, if i had to respond the event in real time, i will send police to city park first to prevent the potential protest march and fights among people. 
+However, if i had to respond the event in real time, i will send police to city park first to prevent the potential protest march and fights among people. Since the number of people can't be ignore, we need to send the police to control the people and prevent the serious consequences of a crowd riot caused by the instigation of the speaker. Because police didn't successfully stop black van, it gave suspects opportunity to drive to Gelato Galore near city park and attracted around 200 onlookers. These people further increase the risks of shooting.
 
 
 
