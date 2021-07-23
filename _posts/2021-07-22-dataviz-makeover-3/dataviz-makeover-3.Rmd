@@ -80,9 +80,76 @@ The address for this visualization on tableau public is [here](https://public.ta
 
 ![](pic/xlsx4.jpg)
 
+5. Link the two csv data sets together in tableau.
+
+![](pic/xlsx5.jpg)
+
+6. Change the headers title to English and correct the data type of columns.
+
+![](pic/xlsx6.jpg)
+
 ## 5.2 Map - city
 
+1. Put the longitude and latitude of city to column and row.
+
+![](pic/tab1.jpg){width=80%}
+
+2. Change the color and size based on average cumulative positive cases of sub-districts.
+
+![](pic/tab2.jpg){width=65%}
+
+3. Create a new calculated field.
+
+![](pic/tab3.jpg){width=50%} 
+
+
+4. Select all in compute using in table calculation.
+
+![](pic/tab8.jpg){width=40%}
+
+5. Add *"rank-city"* to Tooltip and add city name to Label. Then we also edit the title.
+
+![](pic/tab4.jpg)
+
+6. Edit the Tooltip to reflect the average cumulative positive cases and rank.
+
+![](pic/tab5.jpg){width=50%}
+
+7. Map-city is finished.
+
+![](pic/tab6.jpg)
+
 ## 5.3 Map - district
+
+1. Put the longitude and latitude of districts to column and row.
+
+![](pic/tab7.jpg){width=70%}
+
+2. Drag "City" to color and drag "Died" to size.
+
+![](pic/tab11.jpg){width=80%}
+
+3. Create a new calculated field.
+
+![](pic/tab9.jpg){width=60%}
+
+4. Select all for compute using.
+
+![](pic/tab10.jpg){width=40%}
+
+5. Drag "rank-district" to Label and change the mark label of top 5 districts to "Always Show".
+
+![](pic/tab13.jpg){width=50%}
+
+6. Drag the "death rate" and "rank-district" to Tooltip and edit the Tooltip.
+
+![](pic/tab14.jpg){width=80%}
+
+![](pic/tab15.jpg){width=50%}
+
+7. Map-districts is finished.
+
+![](pic/tab16.jpg){width=70%}
 
 ## 5.4 Average number of positive cases in cities
 

@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["dataviz-makeover-3_files/anchor-4.2.2/anchor.min.js","dataviz-makeover-3_files/bowser-1.9.3/bowser.min.js","dataviz-makeover-3_files/distill-2.2.21/template.v2.js","dataviz-makeover-3_files/header-attrs-2.9/header-attrs.js","dataviz-makeover-3_files/jquery-1.11.3/jquery.min.js","dataviz-makeover-3_files/popper-2.6.0/popper.min.js","dataviz-makeover-3_files/tippy-6.2.7/tippy-bundle.umd.min.js","dataviz-makeover-3_files/tippy-6.2.7/tippy-light-border.css","dataviz-makeover-3_files/tippy-6.2.7/tippy.css","dataviz-makeover-3_files/tippy-6.2.7/tippy.umd.min.js","dataviz-makeover-3_files/webcomponents-2.0.0/webcomponents.js","pic/Dashboard 1.jpg","pic/ori1.jpg","pic/ori2.jpg","pic/ori3.jpg","pic/ori4.jpg","pic/preview.png","pic/sketch.jpg","pic/xlsx1.jpg","pic/xlsx2.jpg","pic/xlsx3.jpg","pic/xlsx4.jpg"]}
+  {"type":"character","attributes":{},"value":["dataviz-makeover-3_files/anchor-4.2.2/anchor.min.js","dataviz-makeover-3_files/bowser-1.9.3/bowser.min.js","dataviz-makeover-3_files/distill-2.2.21/template.v2.js","dataviz-makeover-3_files/header-attrs-2.9/header-attrs.js","dataviz-makeover-3_files/jquery-1.11.3/jquery.min.js","dataviz-makeover-3_files/popper-2.6.0/popper.min.js","dataviz-makeover-3_files/tippy-6.2.7/tippy-bundle.umd.min.js","dataviz-makeover-3_files/tippy-6.2.7/tippy-light-border.css","dataviz-makeover-3_files/tippy-6.2.7/tippy.css","dataviz-makeover-3_files/tippy-6.2.7/tippy.umd.min.js","dataviz-makeover-3_files/webcomponents-2.0.0/webcomponents.js","pic/Dashboard 1.jpg","pic/ori1.jpg","pic/ori2.jpg","pic/ori3.jpg","pic/ori4.jpg","pic/preview.png","pic/sketch.jpg","pic/tab1.jpg","pic/tab10.jpg","pic/tab11.jpg","pic/tab12.jpg","pic/tab13.jpg","pic/tab14.jpg","pic/tab15.jpg","pic/tab16.jpg","pic/tab2.jpg","pic/tab3.jpg","pic/tab4.jpg","pic/tab5.jpg","pic/tab6.jpg","pic/tab7.jpg","pic/tab8.jpg","pic/tab9.jpg","pic/xlsx1.jpg","pic/xlsx2.jpg","pic/xlsx3.jpg","pic/xlsx4.jpg","pic/xlsx5.jpg","pic/xlsx6.jpg"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2515,8 +2515,73 @@ d-appendix d-footnote-list a.footnote-backlink {
 <li>Extract clean data for sub-districts.</li>
 </ol>
 <p><img src="pic/xlsx4.jpg" /></p>
+<ol start="5" type="1">
+<li>Link the two csv data sets together in tableau.</li>
+</ol>
+<p><img src="pic/xlsx5.jpg" /></p>
+<ol start="6" type="1">
+<li>Change the headers title to English and correct the data type of columns.</li>
+</ol>
+<p><img src="pic/xlsx6.jpg" /></p>
 <h2 id="map---city">5.2 Map - city</h2>
+<ol type="1">
+<li>Put the longitude and latitude of city to column and row.</li>
+</ol>
+<p><img src="pic/tab1.jpg" style="width:80.0%" /></p>
+<ol start="2" type="1">
+<li>Change the color and size based on average cumulative positive cases of sub-districts.</li>
+</ol>
+<p><img src="pic/tab2.jpg" style="width:65.0%" /></p>
+<ol start="3" type="1">
+<li>Create a new calculated field.</li>
+</ol>
+<p><img src="pic/tab3.jpg" style="width:50.0%" /></p>
+<ol start="4" type="1">
+<li>Select all in compute using in table calculation.</li>
+</ol>
+<p><img src="pic/tab8.jpg" style="width:40.0%" /></p>
+<ol start="5" type="1">
+<li>Add <em>“rank-city”</em> to Tooltip and add city name to Label. Then we also edit the title.</li>
+</ol>
+<p><img src="pic/tab4.jpg" /></p>
+<ol start="6" type="1">
+<li>Edit the Tooltip to reflect the average cumulative positive cases and rank.</li>
+</ol>
+<p><img src="pic/tab5.jpg" style="width:50.0%" /></p>
+<ol start="7" type="1">
+<li>Map-city is finished.</li>
+</ol>
+<p><img src="pic/tab6.jpg" /></p>
 <h2 id="map---district">5.3 Map - district</h2>
+<ol type="1">
+<li>Put the longitude and latitude of districts to column and row.</li>
+</ol>
+<p><img src="pic/tab7.jpg" style="width:70.0%" /></p>
+<ol start="2" type="1">
+<li>Drag “City” to color and drag “Died” to size.</li>
+</ol>
+<p><img src="pic/tab11.jpg" style="width:80.0%" /></p>
+<ol start="3" type="1">
+<li>Create a new calculated field.</li>
+</ol>
+<p><img src="pic/tab9.jpg" style="width:60.0%" /></p>
+<ol start="4" type="1">
+<li>Select all for compute using.</li>
+</ol>
+<p><img src="pic/tab10.jpg" style="width:40.0%" /></p>
+<ol start="5" type="1">
+<li>Drag “rank-district” to Label and change the mark label of top 5 districts to “Always Show”.</li>
+</ol>
+<p><img src="pic/tab13.jpg" style="width:50.0%" /></p>
+<ol start="6" type="1">
+<li>Drag the “death rate” and “rank-district” to Tooltip and edit the Tooltip.</li>
+</ol>
+<p><img src="pic/tab14.jpg" style="width:80.0%" /></p>
+<p><img src="pic/tab15.jpg" style="width:50.0%" /></p>
+<ol start="7" type="1">
+<li>Map-districts is finished.</li>
+</ol>
+<p><img src="pic/tab16.jpg" style="width:70.0%" /></p>
 <h2 id="average-number-of-positive-cases-in-cities">5.4 Average number of positive cases in cities</h2>
 <h2 id="number-of-death-and-death-rate-in-districts">5.5 Number of death and death rate in districts</h2>
 <h2 id="funnel-chart-for-death-rate-and-positive-cases">5.6 Funnel chart for death rate and positive cases</h2>
