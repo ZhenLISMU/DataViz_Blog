@@ -31,30 +31,30 @@ The [original visualization](https://www.singstat.gov.sg/modules/infographics/si
 
 ## 2.1 Clarity
 
-- **_Improper labeling and formatting for X – axis and Y – axis:_** Since the minimum value for both exports and imports is zero, it is unreasonable not to have zero at the origin of coordinate axis. The area when export and import values are all negative is not existing in reality. Therefore, the origin of coordinate axis should be zero.
+- **_Improper labeling and formatting for X – axis and Y – axis:_**  Since the minimum value for both exports and imports is zero, it is unreasonable not to have zero at the origin of coordinate axis. The area when export and import values are all negative is not existing in reality. Therefore, the origin of coordinate axis should be zero.
 
 ![](pic/1.jpg)
 Moreover, for the label of X-axis and Y-axis, there is no unit of measurement of currency which will make readers confused about the value and amount of transaction of exports and imports. Therefore, the labels for X-axis and Y-axis should be “Export (Billion Dollars)" and “Import (Billion Dollars)".
 
-- **_Improper annotation:_** Annotation only comprised by the country names and numbers. There is also no explanation in the notes for numbers of annotation. This will make readers confused about the meanings of numbers. From the information of this image, these data might represent the total transaction values, net exports values, net imports values, exports or imports. Therefore, the note should also explain the meaning of numbers in annotation.
+- **_Improper annotation:_**  Annotation only comprised by the country names and numbers. There is also no explanation in the notes for numbers of annotation. This will make readers confused about the meanings of numbers. From the information of this image, these data might represent the total transaction values, net exports values, net imports values, exports or imports. Therefore, the note should also explain the meaning of numbers in annotation.
 
 ![](pic/2.jpg)
 
-- **_Improper description of chart:_** Since the data in this chart is from 2020, it is unreasonable to describe the trend of balance of trade between Singapore and Mainland China and United States from 2009 and 2006. Therefore, the description should focus on the trend or data of 2020.
+- **_Improper description of chart:_**  Since the data in this chart is from 2020, it is unreasonable to describe the trend of balance of trade between Singapore and Mainland China and United States from 2009 and 2006. Therefore, the description should focus on the trend or data of 2020.
 
 ![](pic/3.jpg)
 
 ## 2.2 Aethetics
 
-- ***Similar colors of two regions:*** Since the author chose to use different colors represent different countries, it is inappropriate to use similar colors to represent two regions. It is hard for readers to distinguish the colors that represent Thailand and EU. Therefore, it is necessary for us to change the color represents Thailand or EU.
+- ***Similar colors of two regions:***  Since the author chose to use different colors represent different countries, it is inappropriate to use similar colors to represent two regions. It is hard for readers to distinguish the colors that represent Thailand and EU. Therefore, it is necessary for us to change the color represents Thailand or EU.
 
 ![](pic/4.jpg)
 
-- ***Improper settings for circles:*** Since there are some countries have close exports and imports, there are overlaps between countries. Moreover, the diagonal of chart is not obvious enough for readers to judge these countries to be net exporters or net importers. For the circle represents Korea, it is hard for readers to recognize whether it is the net exporter or net importer. And for the circles represent Japan, Malaysia and EU, they are also covered by the other countries’ circles or the small circles of them are near the diagonal which makes readers hard to recognize. Therefore, we can set the transparency of circles to fix this problem.
+- ***Improper settings for circles:***  Since there are some countries have close exports and imports, there are overlaps between countries. Moreover, the diagonal of chart is not obvious enough for readers to judge these countries to be net exporters or net importers. For the circle represents Korea, it is hard for readers to recognize whether it is the net exporter or net importer. And for the circles represent Japan, Malaysia and EU, they are also covered by the other countries’ circles or the small circles of them are near the diagonal which makes readers hard to recognize. Therefore, we can set the transparency of circles to fix this problem.
 
 ![](pic/5.jpg)
 
-- ***Improper choice of bubble chart:*** Since it is hard for readers to compare the size of circles, it is a bad decision to use circles’ size to represent the transactions values. For the countries have close transaction values, it is hard for readers to recognize which are bigger trading partners with Singapore. Therefore, we can change the charts’ type.
+- ***Improper choice of bubble chart:***  Since it is hard for readers to compare the size of circles, it is a bad decision to use circles’ size to represent the transactions values. For the countries have close transaction values, it is hard for readers to recognize which are bigger trading partners with Singapore. Therefore, we can change the charts’ type.
 
 # 3. Proposed Design
 

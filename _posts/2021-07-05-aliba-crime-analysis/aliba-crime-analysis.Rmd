@@ -675,6 +675,17 @@ tm_shape(bgmap) +
 
 The city park is far away from dancing dolphin and black van vehicle route. Moreover, the potential consequence is not as severe as fire and kidnapping. POK tried to use this gathering to distract the police's attention. By doing this, they can more smoothly complete their attack targets and events.
 
+```{r}
+ggplot(risk_cc,aes(x = time,fill = "red",color = "grey"))+
+  geom_histogram(alpha = 0.5,position="identity",bins = 50)+
+  ggtitle('Distribution of frequency of emergency messages from call center')+
+  theme(axis.title.y =element_blank(),
+        axis.title.x =element_blank())
+
+```
+
+Moreover, the distribution of emergency messages from call center reached to peak at around 18:40 and 19:40 which are fire on dancing dolphin and black van accident. From the number of messages, it can also reflect the severity of events. Therefore, we should also send police to the more severe events. 
+
 However, if i had to respond the event in real time, i will send police to city park first to prevent the potential protest march and fights among people. Since the number of people can't be ignore, we need to send the police to control the people and prevent the serious consequences of a crowd riot caused by the instigation of the speaker. Because police didn't successfully stop black van, it gave suspects opportunity to drive to Gelato Galore near city park and attracted around 200 onlookers. These people further increase the risks of shooting.
 
 
