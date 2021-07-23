@@ -153,9 +153,64 @@ The address for this visualization on tableau public is [here](https://public.ta
 
 ## 5.4 Average number of positive cases in cities
 
+1. Drag "Positive" to column and change the measure to "Average".
+
+![](pic/tab17.jpg){width=60%}
+
+2. Drag "City" to row and order the bar chart based on average positive cases.
+
+![](pic/tab18.jpg)
+
+3. Create the new calculated fields to calculate the 95% upper and lower limit for positive cases.
+
+![](pic/tab20.jpg){width=70%}
+
+![](pic/tab21.jpg){width=40%} ![](pic/tab22.jpg){width=30%}
+
+4. Drag the "positive lower bar" and "positive upper bar" to Detail.
+
+![](pic/tab23.jpg){width=25%}
+
+5. Right click the X-axis and add the reference line.
+
+![](pic/tab19.jpg){width=60%}
+
+![](pic/tab24.jpg)
+
+6. Create a new calculated field for horizontal lines between vertical lines.
+
+![](pic/tab25.jpg){width=50%}
+
+7. Drag "positive lower bar" to column and drag "positive bar length" to Size.
+
+![](pic/tab27.jpg){width=30%}
+
+![](pic/tab26.jpg)
+
+8. Right click the X-axis and choose "Dual Axis".
+
+![](pic/tab28.jpg){width=40%}
+
+9. Choose the Size for Gantt Bar.
+
+![](pic/tab29.jpg){width=35%}
+
+10. Edit the Tooltip.
+
+![](pic/tab30.jpg){width=60%}
+
+11. Edit the title.
+
+![](pic/tab31.jpg){width=60%}
+
+12. This chart is finished.
+
+![](pic/tab32.jpg)
+
+
 ## 5.5 Number of death and death rate in districts
 
-## 5.6 Funnel chart for death rate and positive cases
+## 5.6 Scatter plot for death rate and positive cases
 
 ## 5.7 Dashboard
 
