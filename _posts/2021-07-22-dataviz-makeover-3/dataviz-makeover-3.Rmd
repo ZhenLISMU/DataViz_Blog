@@ -207,10 +207,33 @@ The address for this visualization on tableau public is [here](https://public.ta
 
 ![](pic/tab32.jpg)
 
+## 5.5 Scatter plot for death rate and positive cases
 
-## 5.5 Number of death and death rate in districts
+1. Create a new calculated field named death rate for sub-districts.
 
-## 5.6 Scatter plot for death rate and positive cases
+![](pic/tab33.jpg){width=50%}
+
+2. Drag variables to column and row. Then drag "Sub-district" to Detail.
+
+![](pic/tab34.jpg){width=80%}
+
+3. Change the color of scatter to yellow.
+
+4. Add reference line to Y-axis.
+
+![](pic/tab35.jpg){width=60%}
+
+5. Right click on the reference line and set the "Shading" to 0%.
+
+![](pic/tab36.jpg){width=30%} 
+
+![](pic/tab37.jpg){width=30%}
+
+6. This chart is finished. We can add this to the Tooltip of last chart.
+
+![](pic/tab38.jpg){width=60%}
+
+## 5.6 Number of death and death rate in districts
 
 ## 5.7 Dashboard
 
