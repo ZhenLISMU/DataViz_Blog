@@ -235,6 +235,43 @@ The address for this visualization on tableau public is [here](https://public.ta
 
 ## 5.6 Number of death and death rate in districts
 
+1. Drag the variables to column and row.
+
+![](pic/tab39.jpg){width=60%}
+
+2. Drag "Died" and "death rate" to the color of their chart.
+
+![](pic/tab40.jpg){width=30%} ![](pic/tab41.jpg){width=30%}
+
+3. Right click the X-axis of two charts and add reference line.
+
+![](pic/tab42.jpg){width=40%} ![](pic/tab43.jpg){width=40%}
+
+4. Order the bar chart descending and label the top 5 districts by "Died" and "death rate".
+
+![](pic/tab44.jpg){width=40%}
+
+5. Edit the Tooltip.
+
+![](pic/tab45.jpg){width=60%}
+
+6. Edit the Title.
+
+![](pic/tab46.jpg){width=60%}
+
+7. This chart is finished.
+
+![](pic/tab47.jpg)
+
 ## 5.7 Dashboard
+
+1. Set the title - "Situation of patients diagnosed as positive for COVID-19, Jakarta of Indonesia".
+
+2. Add the data source in the bottom of dashboard: "Data Source: Open Data Covid-19 Provinsi DKI Jakarta(https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/)"
+
+3. Arrange the location of charts properly and finish the dashboard.
+
+![](pic/Dashboard 1.jpg)
+
 
 
