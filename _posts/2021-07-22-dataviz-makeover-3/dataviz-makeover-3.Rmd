@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ![](pic/ori1.jpg)
 
 ![](pic/ori2.jpg)
-The orignal visualization reflect the death cases and positive cases situation in Jakarta. The data source is from [Open Data Covid-19 Provinsi DKI Jakarta](https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/).For creating the data visualisation above, the file dated on **30 Juni 2021 Pukul 10.00** is used. The purpose of visualization is to prepare two data visualization to support the news write-up of the latest development in DKI Jakarta.
+The orignal visualization reflects the death cases and positive cases situation in Jakarta. The data source is from [Open Data Covid-19 Provinsi DKI Jakarta](https://riwayat-file-covid-19-dki-jakarta-jakartagis.hub.arcgis.com/).For creating the data visualisation above, the file dated on **30 Juni 2021 Pukul 10.00** is used. The purpose of visualization is to prepare two data visualization to support the news write-up of the latest development in DKI Jakarta.
 
 # 2. Critiques & Suggestions
 
