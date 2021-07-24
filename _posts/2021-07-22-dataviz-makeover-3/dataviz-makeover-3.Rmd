@@ -70,6 +70,12 @@ The address for this visualization on tableau public is [here](https://public.ta
 
 # 4. Main Observations
 
+- ***JAKARTA PUSAT: *** Jakarta Pusat has the lowest average cumulative deaths and variance of sub-districts. The average cumulative positive cases is around 1229. The 95% upper bar is 1390 and the 95% lower bar is 1068. Moreover, the average death rate is 1.8% which is the highest among five cities. This indicate that the medical treatment in Jakarta Pusat.
+
+- ***JAKARTA UTARA: *** Jakarta Utara has the highest average cumulative deaths and the bar length is the highest amoung five cities. The average cumulative positive cases is around 2117. The average death rate per sub-district is 1.5%. Although the average cumulative positive cases is highest, the district with highest cumulative deaths is in Jakarta Barat. This indicate that the medical treatments in Jakarta Utara are effective for prevent deaths.
+
+- ***JAKARTA TIMUR: *** From the top 5 districts with highest cumulative deaths, there are two of them are from Jakarta Timur. It has the second highest average cumulative positive cases and second highest average death rate which is 1.7%. Moreover, the 95% bar length is low. Therefore, this indicate Jakarta Timur has generally high number of positive cases and death rates. Jakarta Timur should have more attention from government to control the epidemic situation.
+
 # 5. Data Visualization Process
 
 ## 5.1 Data Preparation
