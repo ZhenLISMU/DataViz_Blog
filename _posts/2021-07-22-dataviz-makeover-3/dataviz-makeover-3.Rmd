@@ -34,6 +34,8 @@ The orignal visualization reflect the death cases and positive cases situation i
 
 - ***Improper annotation for top 5 districts: *** The annotations of top 5 districts are the district names which can't reflect the number of deaths and the annotations overlap the point of **CENGKENG**. Therefore, the annotation didn't help highlight top 5 districts and even make the visualization effect worse. The information readers can get from annotation is the name of top 5 highest districts which can be found easily on the Y-axis. 
 
+- ***Improper title: *** The title reflect that this chart reflects the cumulative death in top 5 districts. However, the chart contains all the districts and only highlight the top 5 districts by labeling the district names. This choice of words for title is misleading and should not contains top 5 if chart actually reflect all the districts epidemic situation.
+
 ![](pic/ori4.jpg)
 
 - ***Improper X-axis title: *** The x-axis title of second visualization is misleading. It will make readers interpret wrongly about the level of cumulative positive cases data. It should also mentioned the data was grouped by city and should also show the variation of average cumulative data. 
@@ -41,6 +43,10 @@ The orignal visualization reflect the death cases and positive cases situation i
 ## 2.2 Aethetics
 
 - ***Improper Chart Type of Cumulative Deaths: *** Since the data is cumulative deaths, scatter plot can't help readers understand the deaths and hard to figure out the accurate number of deaths of different districts. Moreover, the scatter plot is also difficult for readers to find the point corresponding to each district. The scatter plot can't help readers to find insightful ideas about death cases.
+
+- ***Improper color choice: *** The chart used blue for scatter plot and bar chart to reflect the cumulative death and epidemic situation. The selection of blue is not appropriate for this dangerous and severe situation. Blue represent the cold and clam which is not as good as red for this situation.
+
+- ***Length of titles: *** The title for two charts are two lines which are too long for readers to capture the key information for charts. Moreover, the readers will be attracted by the chart and ignore the long title when they first look at the charts. Therefore, the title should be simple and easy to read. We can put the additional information put to the sub-titles.
 
 # 3. Proposed Design
 
@@ -56,7 +62,11 @@ The address for this visualization on tableau public is [here](https://public.ta
 
 ## 3.3 Advantage of Proposed Design
 
+- ***Visualization of map*** for cities and districts can help readers understand the epidemic situation better in the geographic level. By doing this, the readers can also analyze the epidemic situation by looking at the neighbor sub-districts. 
 
+- ***Death rate*** is also important for covid 19 epidemic situation evaluation. Therefore, the proposed design include the death rate for each district and also label the top 5 districts with highest death rate. This can make the visualization of epidemic situation more comprehensive.
+
+- ***95% upper and lower bar*** can help readers to understand the variation of cumulative death cases in different cities. In the tooltip, the scatter plot can also help readers understand the distribution of sub-districts for death rate and positive cases.
 
 # 4. Main Observations
 

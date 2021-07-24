@@ -1515,7 +1515,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="clarity">2.1 Clarity</h2>
 <p><img src="pic/ori3.jpg" /></p>
 <ul>
-<li><strong><em>Improper annotation for top 5 districts: </em></strong> The annotations of top 5 districts are the district names which can’t reflect the number of deaths and the annotations overlap the point of <strong>CENGKENG</strong>. Therefore, the annotation didn’t help highlight top 5 districts and even make the visualization effect worse. The information readers can get from annotation is the name of top 5 highest districts which can be found easily on the Y-axis.</li>
+<li><p><strong><em>Improper annotation for top 5 districts: </em></strong> The annotations of top 5 districts are the district names which can’t reflect the number of deaths and the annotations overlap the point of <strong>CENGKENG</strong>. Therefore, the annotation didn’t help highlight top 5 districts and even make the visualization effect worse. The information readers can get from annotation is the name of top 5 highest districts which can be found easily on the Y-axis.</p></li>
+<li><p><strong><em>Improper title: </em></strong> The title reflect that this chart reflects the cumulative death in top 5 districts. However, the chart contains all the districts and only highlight the top 5 districts by labeling the district names. This choice of words for title is misleading and should not contains top 5 if chart actually reflect all the districts epidemic situation.</p></li>
 </ul>
 <p><img src="pic/ori4.jpg" /></p>
 <ul>
@@ -1523,7 +1524,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </ul>
 <h2 id="aethetics">2.2 Aethetics</h2>
 <ul>
-<li><strong><em>Improper Chart Type of Cumulative Deaths: </em></strong> Since the data is cumulative deaths, scatter plot can’t help readers understand the deaths and hard to figure out the accurate number of deaths of different districts. Moreover, the scatter plot is also difficult for readers to find the point corresponding to each district. The scatter plot can’t help readers to find insightful ideas about death cases.</li>
+<li><p><strong><em>Improper Chart Type of Cumulative Deaths: </em></strong> Since the data is cumulative deaths, scatter plot can’t help readers understand the deaths and hard to figure out the accurate number of deaths of different districts. Moreover, the scatter plot is also difficult for readers to find the point corresponding to each district. The scatter plot can’t help readers to find insightful ideas about death cases.</p></li>
+<li><p><strong><em>Improper color choice: </em></strong> The chart used blue for scatter plot and bar chart to reflect the cumulative death and epidemic situation. The selection of blue is not appropriate for this dangerous and severe situation. Blue represent the cold and clam which is not as good as red for this situation.</p></li>
+<li><p><strong><em>Length of titles: </em></strong> The title for two charts are two lines which are too long for readers to capture the key information for charts. Moreover, the readers will be attracted by the chart and ignore the long title when they first look at the charts. Therefore, the title should be simple and easy to read. We can put the additional information put to the sub-titles.</p></li>
 </ul>
 <h1 id="proposed-design">3. Proposed Design</h1>
 <h2 id="sketch">3.1 Sketch</h2>
@@ -1532,6 +1535,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p><img src="pic/Dashboard%201.jpg" /></p>
 <p>The address for this visualization on tableau public is <a href="https://public.tableau.com/app/profile/zhen.li7736/viz/Book1_16270412233930/Dashboard1">here</a>.</p>
 <h2 id="advantage-of-proposed-design">3.3 Advantage of Proposed Design</h2>
+<ul>
+<li><p><strong><em>Visualization of map</em></strong> for cities and districts can help readers understand the epidemic situation better in the geographic level. By doing this, the readers can also analyze the epidemic situation by looking at the neighbor sub-districts.</p></li>
+<li><p><strong><em>Death rate</em></strong> is also important for covid 19 epidemic situation evaluation. Therefore, the proposed design include the death rate for each district and also label the top 5 districts with highest death rate. This can make the visualization of epidemic situation more comprehensive.</p></li>
+<li><p><strong><em>95% upper and lower bar</em></strong> can help readers to understand the variation of cumulative death cases in different cities. In the tooltip, the scatter plot can also help readers understand the distribution of sub-districts for death rate and positive cases.</p></li>
+</ul>
 <h1 id="main-observations">4. Main Observations</h1>
 <h1 id="data-visualization-process">5. Data Visualization Process</h1>
 <h2 id="data-preparation">5.1 Data Preparation</h2>
