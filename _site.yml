@@ -1,16 +1,18 @@
 name: "DataViz_Blog"
 title: "LI Zhen"
 description: |
-  DataViz Makeover
+  Zhen's personal website.
 output_dir: "_site"
 navbar:
   right:
-    - text: "Posts"
-      href: index.html
+    - text: "Visualization"
+      href: posts.html
     - text: "Tableau Public"
       href: https://public.tableau.com/profile/zhen.li7736#!/
     - text: "About"
       href: about.html
+    - text: "Home"
+      href: index.html
     - icon: fa fa-linkedin
       href: https://www.linkedin.com/in/zhen-li-8135b5189/
     - icon: fa fa-github

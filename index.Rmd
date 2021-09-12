@@ -1,5 +1,38 @@
 ---
-title: "Data, Statistics, Visualization"
+title: "LI ZHEN"
 site: distill::distill_website
-listing: posts
+image: "lz.jpg"
+links:
+  - label: '<i class="fab fa-github"></i> GitHub'
+    url: "https://github.com/ZhenLISMU"
+  - label: '<i class="fab fa-linkedin"></i> LinkedIn'
+    url: "https://www.linkedin.com/in/zhen-li-8135b5189/"
+  - label: '<i class="fas fa-envelope"></i> Email'
+    url: "zhen.li.2020@mitb.smu.edu.sg"
+
+output:
+  postcards::trestles
+---
+Hi and welcome to my personal website! There are blogs of data visualization and projects I did during my postgraduate studying period.
+
+---
+
+EDUCATION
+---
+**Singapore Management University** | Singapore, Singapore
+
+Master of IT in Business, 2021-2022
+
+**Xiangtan University** | Xiangtan, China
+
+Economic Degree in Finance, 2016-2020
+
+---
+
+EXPERIENCE
+---
+**DHL Express** | Data Analytics Intern | Singapre, Singapore | 2021.6-Present
+
+**Chasing Securities** | Summer Intern | Changsha, China | 2019.6-2019.8
+
 ---

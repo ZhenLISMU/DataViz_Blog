@@ -7,7 +7,13 @@ description: |
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-These blog posts record my projects and assignments during the learning journey of [Master of IT in Business (MITB)](https://scis.smu.edu.sg/master-it-business) in [Singapore Management University](https://www.smu.edu.sg/). Hope you can enjoying them!
+These blog posts record my projects and assignments of Visualization Analytics and Application course during the learning journey of [Master of IT in Business (MITB)](https://scis.smu.edu.sg/master-it-business) in [Singapore Management University](https://www.smu.edu.sg/). 
+
+I mainly used the R and Tableau to build this website and finish the assignments. 
+
+Hope you can enjoying them!
+
+You can contact me at zhen.li.2020@mitb.smu.edu.sg .
 
 
 ![](smu.jpg)

@@ -5,15 +5,22 @@
       "title": "About this blog",
       "description": "Welcome to my blog!",
       "author": [],
-      "contents": "\r\nThese blog posts record my projects and assignments during the learning journey of Master of IT in Business (MITB) in Singapore Management University. Hope you can enjoying them!\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-05T19:42:33+08:00"
+      "contents": "\r\nThese blog posts record my projects and assignments of Visualization Analytics and Application course during the learning journey of Master of IT in Business (MITB) in Singapore Management University.\r\nI mainly used the R and Tableau to build this website and finish the assignments.\r\nHope you can enjoying them!\r\nYou can contact me at zhen.li.2020@mitb.smu.edu.sg .\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-09-12T20:31:32+08:00"
     },
     {
       "path": "index.html",
-      "title": "Data, Statistics, Visualization",
+      "title": "LI ZHEN",
+      "author": [],
+      "contents": "\r\n\r\n          \r\n      \r\n      LI Zhen\r\n      \r\n      \r\n      Visualization\r\n      Tableau Public\r\n      About\r\n      Home\r\n      \r\n      \r\n      \r\n      \r\n      \r\n      \r\n      ☰\r\n      \r\n      \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              LI ZHEN\r\n            \r\n            \r\n              \r\n                \r\n                    \r\n                      \r\n                         GitHub\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                         LinkedIn\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                         Email\r\n                      \r\n                    \r\n                  \r\n                                  \r\n            \r\n          \r\n        \r\n        \r\n        \r\n          \r\n            Hi and welcome to my personal website! There are blogs of data visualization and projects I did during my postgraduate studying period.\r\n            \r\n            EDUCATION\r\n            Singapore Management University | Singapore, Singapore\r\n            Master of IT in Business, 2021-2022\r\n            Xiangtan University | Xiangtan, China\r\n            Economic Degree in Finance, 2016-2020\r\n            \r\n            \r\n            EXPERIENCE\r\n            DHL Express | Data Analytics Intern | Singapre, Singapore | 2021.6-Present\r\n            Chasing Securities | Summer Intern | Changsha, China | 2019.6-2019.8\r\n            \r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              LI ZHEN\r\n            \r\n            \r\n              \r\n                \r\n                                    \r\n                    \r\n                       GitHub\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                       LinkedIn\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                       Email\r\n                    \r\n                  \r\n                                  \r\n              \r\n            \r\n            \r\n              Hi and welcome to my personal website! There are blogs of data visualization and projects I did during my postgraduate studying period.\r\n              \r\n              EDUCATION\r\n              Singapore Management University | Singapore, Singapore\r\n              Master of IT in Business, 2021-2022\r\n              Xiangtan University | Xiangtan, China\r\n              Economic Degree in Finance, 2016-2020\r\n              \r\n              \r\n              EXPERIENCE\r\n              DHL Express | Data Analytics Intern | Singapre, Singapore | 2021.6-Present\r\n              Chasing Securities | Summer Intern | Changsha, China | 2019.6-2019.8\r\n              \r\n            \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
+      "last_modified": "2021-09-12T23:17:25+08:00"
+    },
+    {
+      "path": "posts.html",
+      "title": "Data, Statistics & Visualization",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-07-05T19:23:21+08:00"
+      "last_modified": "2021-09-12T23:19:43+08:00"
     }
   ],
   "collections": ["posts/posts.json"]

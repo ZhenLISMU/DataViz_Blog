@@ -18,6 +18,9 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE,fig.retina=3)
 ```
+
+The Shiny app is [here](https://vast2021challenge3.shinyapps.io/vastchallenge3_G9/?_ga=2.105985795.1817832532.1631449293-1654929954.1631449293)
+
 # 1. Introduction
 
 The [2021 IEEE Visual Analytics Science and Technology (VAST) Challenge](https://vast-challenge.github.io/2021/MC3.html) brings back a classic challenge of 2014 with different questions. This is about a crime incident which is a kidnapping GAStech's employees.
